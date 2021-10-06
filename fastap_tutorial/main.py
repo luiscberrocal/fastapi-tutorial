@@ -2,6 +2,8 @@ from typing import Optional
 
 from fastapi import FastAPI
 
+from fastap_tutorial.models import Blog
+
 app = FastAPI()
 
 
@@ -29,4 +31,11 @@ def show(blog_id: int):
 @app.get('/blog/{blog_id}/comments')
 def comments(blog_id: int):
     data = {'message': ['Comment 1', ['Comment2']], 'id': blog_id}
+    return data
+
+
+@app.post('/blog/create')
+def create_blog(request: Blog):
+    return request
+    data = {'message': 'Blog is created'}
     return data
