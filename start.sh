@@ -1,3 +1,3 @@
 #!/bin/sh
 
-uvicorn fastap_tutorial.main:app --reload
+uvicorn fastapi_tutorial.main:app --reload

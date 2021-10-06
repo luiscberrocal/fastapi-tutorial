@@ -2,7 +2,7 @@ from typing import Optional
 
 from fastapi import FastAPI
 
-from fastap_tutorial.models import Blog
+from .models import Blog
 
 app = FastAPI()
 
