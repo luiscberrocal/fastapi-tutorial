@@ -1,11 +1,16 @@
+from typing import Optional
+
 from fastapi import FastAPI
 
 app = FastAPI()
 
 
-@app.get('/')
-def index():
-    data = {'message': 'Hello', 'name': 'kilo'}
+@app.get('/blog')
+def index(limit=10, published: bool = False, sort: Optional[str] = None):
+    if published:
+        data = {'message': f'{limit} published blogs from db', 'name': 'kilo'}
+    else:
+        data = {'message': f'{limit} blogs from db', 'name': 'kilo'}
     return data
 
 
@@ -19,6 +24,7 @@ def unpublished():
 def show(blog_id: int):
     data = {'message': 'About data', 'id': blog_id}
     return data
+
 
 @app.get('/blog/{blog_id}/comments')
 def comments(blog_id: int):
